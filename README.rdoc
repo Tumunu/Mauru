@@ -1,0 +1,28 @@
+= aro'a
+
+	aro'a 
+	Greet, welcome, salute, offer good wishes (esp. to guests on arrival or departure) 
+	"Kua aro‘a mai ‘aia kiāku i tōku ‘ākara atu‘anga kiāia" = "He greeted me when I glanced at him"
+
+This is an old project moved from Google Code. Obviously redundant considering Nokia failed with Symbian ... but such is life. 
+
+== what
+
+The goal of this little project is to provide:
+
+	A flash bang whizzy Ajax powered web interface
+	Symbian C++ source code
+	Raw PHP shit
+	A symfony plugin
+	Semacode or some other related barcoding/image recognition interface
+	I have been using the Ext javascript framework a lot recently and will be finally adding a web interface to this project.
+
+
+== how?
+
+I have a whole lot of code lying around that meet the primary goals of mauru. The real test of my super human abilities is to provide clean usably code that is easy to install and handy to a greater audience.
+
+
+== why
+
+This is a little pet project I've had for a wee while. When I started writting Symbian C++ many years ago I really wanted something like all the Web 2.0 sites out there. A place where I could enter a few changes to a pre-defined Symbian C++ application and it would spit it my desired results for me.
