@@ -1,0 +1,269 @@
+/*
+ *  Name:     CImageLoader from ImageLoader.h
+ *  Author:   Cleave Pokotea
+ *  Www:      www.tumunu.com
+ *  Project:  mauru
+ *  About:    This file contains all the resources
+ */
+
+ 
+// rosource identifier
+NAME MAUR // 4 letter ID
+
+// includes
+#include <eikon.rh>
+#include "Mauru.hrh"
+#include "Mauru.loc"
+#include <avkon.rsg>
+#include <avkon.rh>
+#include <avkon.mbg>
+
+// constants
+#define KCameraSoundFile "Z:\\system\\sounds\\digital\\Camera1a_2_8kHz.wav"
+#define KSnapSoundId 2
+
+// resource definitions
+RESOURCE RSS_SIGNATURE { }
+
+RESOURCE TBUF { buf = "mauru"; }
+
+RESOURCE EIK_APP_INFO
+    {
+    //status_pane = r_mauru_status_pane;
+    }
+
+// r_mauru_hotkeys
+RESOURCE HOTKEYS r_mauru_hotkeys
+    {
+    control =
+      {
+      HOTKEY { command = EAknCmdExit; key = 'e'; }
+      	};
+    }
+
+// views
+// r_mauru_splash
+RESOURCE AVKON_VIEW r_mauru_splash
+    {
+    hotkeys = r_mauru_hotkeys;
+    menubar = r_mauru_splash_menubar;  
+    cba     = R_AVKON_SOFTKEYS_SELECTION_LIST;    
+    }
+    
+// r_mauru_splash_menubar
+RESOURCE MENU_BAR r_mauru_splash_menubar
+    {
+    titles =
+      {
+      MENU_TITLE { menu_pane = r_mauru_app_menu; txt = "App"; },
+      MENU_TITLE { menu_pane = r_mauru_splash_menu; txt = "View"; }
+      };
+    }
+    
+// r_mauru_splash_menu
+RESOURCE MENU_PANE r_mauru_splash_menu
+    {
+    items =
+      {
+      MENU_ITEM { command = EMauruCmdCamera; txt = mauru_splash_menu_camera; }
+      };
+    }
+    
+// r_mauru_cam
+RESOURCE AVKON_VIEW r_mauru_cam
+    {
+    hotkeys = r_mauru_hotkeys; 
+    cba     = R_AVKON_SOFTKEYS_SELECTION_LIST; 
+    }
+    
+// r_mauru_cam_menu
+RESOURCE MENU_PANE r_mauru_cam_menu
+    {
+    items =
+      {
+      MENU_ITEM { command = EMauruCmdSnap; txt = mauru_cam_menu_capture; }
+      };
+    }
+    
+// r_mauru_diary
+RESOURCE AVKON_VIEW r_mauru_playback
+    {
+    hotkeys = r_mauru_hotkeys;
+    cba     = R_AVKON_SOFTKEYS_SELECTION_LIST; 
+    }
+    
+// r_mauru_app_menu
+RESOURCE MENU_PANE r_mauru_app_menu
+    {
+    items =
+      {
+      MENU_ITEM { command = EMauruCmdAbout; txt = mauru_app_menu_about; },
+      MENU_ITEM { command = EAknCmdExit; txt = mauru_app_menu_exit; }
+      };
+    }
+    
+//------------------------------------------------------
+// definition of text resources
+RESOURCE TBUF r_mauru_cam_notready
+	{ 
+	buf = mauru_cam_notready; 
+	}
+
+RESOURCE TBUF r_mauru_cam_timeout
+	{ 
+	buf = mauru_cam_timeout; 
+	}
+
+RESOURCE TBUF r_mauru_cam_view
+	{ 
+	buf = mauru_cam_view; 
+	}
+
+RESOURCE TBUF r_mauru_cam_capture
+	{ 
+	buf = mauru_cam_capture; 
+	}
+	
+RESOURCE TBUF r_audio_opening
+	{ 
+	buf = mivis_audio_open; 
+	}
+	
+RESOURCE TBUF r_audio_paused
+	{ 
+	buf = mivis_audio_paused; 
+	}
+	
+RESOURCE TBUF r_audio_stopped
+	{ 
+	buf = mivis_audio_stop; 
+	}	
+	
+RESOURCE TBUF r_audio_playing
+	{ 
+	buf = mivis_audio_playing; 
+	}			
+
+RESOURCE CBA r_mauru_softkeys_options_delete
+	{
+	buttons =
+		{
+		CBA_BUTTON { id = EAknSoftkeyOptions; txt = mauru_cam_cba_options; },
+		CBA_BUTTON { id = EMauruCmdDelete; txt = mauru_cam_cba_delete; }
+		};
+	}       
+
+RESOURCE DIALOG r_mauru_about
+	{
+	flags = EGeneralQueryFlags | EEikDialogFlagNoBorder | EEikDialogFlagNoShadow;
+	buttons = R_AVKON_SOFTKEYS_OK_EMPTY;
+	items= 
+		{
+		DLG_LINE 
+			{
+			id = EMauruDlgAbout;
+			type = EAknCtPopupHeadingPane;
+			control = AVKON_HEADING 
+				{
+				headinglayout=R_AVKON_LIST_HEADING_PANE_POPUPS;
+				};
+			},
+		DLG_LINE 
+			{
+			id = ESamDlgAboutContent;
+			type = EAknCtMessageQuery;
+			control = AVKON_MESSAGE_QUERY 
+				{
+				};
+			}
+		};
+	}  	
+	
+RESOURCE DIALOG r_mauru_processing_note
+	{
+	flags=EAknWaitNoteFlags;
+	items =
+		{
+		DLG_LINE
+			{
+			id = EMauruDlgProcessing;
+			type = EAknCtNote;
+			control = AVKON_NOTE
+				{
+				layout = EWaitLayout;
+				singular_label = mauru_semacode_dialog_processing;
+				imagefile = "z:\\system\data\avkon.mbm";
+				imageid = EMbmAvkonQgn_note_progress;
+				imagemask = EMbmAvkonQgn_note_progress_mask;
+				animation = R_QGN_GRAF_WAIT_BAR_ANIM;
+				};
+			}
+		};
+	}
+	
+RESOURCE AVKON_SOUND_INFO_LIST r_mauru_cam_snap_sound
+	{
+	list = 
+		{
+		AVKON_SOUND_INFO 
+			{ 
+			sid = KSnapSoundId; 
+			priority = 45;
+			preference = EAknAudioPrefCamera;
+			file = KCameraSoundFile;
+			}
+		};
+	}		 
+
+/*
+ * displays the URL result of decoding.
+ * can copy and paste it too ...
+ */
+RESOURCE DIALOG r_mauru_semacode
+	{
+	flags = EGeneralQueryFlags;
+	buttons = R_AVKON_SOFTKEYS_OK_CANCEL;
+	items = 
+		{
+		DLG_LINE 
+			{
+			type = EAknCtQuery;
+			id = EGeneralQuery;
+			control = AVKON_DATA_QUERY 
+				{
+				layout = EMultiDataFirstEdwin;
+				label = "Test";
+				control = EDWIN 
+					{
+					flags = EEikEdwinNoHorizScrolling | EEikEdwinResizable;
+					width = 25;
+					lines = 1;
+					maxlength = 1024;
+					};
+				};
+			}
+		};
+	}	
+	
+RESOURCE DIALOG r_ask_pwd
+	{
+		flags = EGeneralQueryFlags;
+		buttons = R_AVKON_SOFTKEYS_OK_CANCEL;
+		items =
+			{
+			DLG_LINE
+				{
+				type = EAknCtQuery;
+				id = ESamDlgPassword;
+				control = AVKON_DATA_QUERY
+					{
+					layout = ECodeLayout;
+					label = "Enter password";
+					control = SECRETED
+						{
+						num_letters = 15;
+						};
+					};
+			}
+		};
+	}	

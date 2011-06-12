@@ -1,0 +1,37 @@
+/*
+ *  Name:     Mauru.loc
+ *  Author:   Cleave Pokotea
+ *  Www:      www.tumunu.com
+ *  Project:  mauru
+ *  About:    This is a localisation file for mauru
+ */
+
+ 
+// application names
+#define		mauru_app_caption_string                    "mauru"
+#define		mauru_app_short_caption_string              "mauru"
+
+// application wide menu items
+#define		mauru_app_menu_exit                         "Exit"
+#define		mauru_app_menu_about                        "About mauru"
+
+// view specific menu items
+#define		mauru_menu_splash_camera                    "Start camera"
+#define		mauru_menu_cam_capture                      "Capture & Decode"
+
+// semacode
+#define		mauru_semacode_dialog_processing            "Searching image for code"
+
+// camera
+#define		mauru_cam_notready                          "Starting camera"
+#define		mauru_cam_timeout                           "Timed out"
+#define		mauru_cam_view                              "Snapshot"
+#define		mauru_cam_capture                           "Active"
+#define		mauru_cam_cba_delete                        "Delete"
+#define		mauru_cam_cba_options                       "Options"
+
+// audio
+#define		mauru_audio_open                            "Opening files"
+#define		mauru_audio_paused                          "Audio paused"
+#define		mauru_audio_stop                            "Audio stopped"
+#define		mauru_audio_playing                         "Audio playing"

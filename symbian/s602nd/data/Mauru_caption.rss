@@ -1,0 +1,16 @@
+/*
+ *  Name:     Mauru.loc
+ *  Author:   Cleave Pokotea
+ *  Www:      www.tumunu.com
+ *  Project:  mauru
+ */
+
+
+#include "Mauru.loc"
+#include <apcaptionfile.rh>
+
+RESOURCE CAPTION_DATA
+{
+  caption = mauru_app_caption_string;
+  shortcaption = mauru_app_short_caption_string;
+}
